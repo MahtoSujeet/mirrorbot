@@ -1,10 +1,10 @@
 import requests
 
 def mirror(arg):
-	args= arg.split("|h")
+	args= arg.split("|")
 	try:
 		link= args[0].strip()
-		file_name= "downloads/"+args[1].strip()
+		file_name= args[1].strip()
 	except Exception as e:
 		return f"ERROR : {e}"
 	
