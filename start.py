@@ -16,7 +16,9 @@ def mirror_func(client, message):
 			reply_to_message_id=message.message_id,
 			text= "Got Mirror Request!")
 	
-	msg= mirror.mirror(arg)
+	data= mirror.mirror(arg)
+	msg = data[0]
+	thumbnail= data[1]
 	if "ERROR" in msg:
 		bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
@@ -24,7 +26,7 @@ def mirror_func(client, message):
 	else:
 		bot.send_document(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
-	document=msg, parse_mode="html")
+	document=msg, thumb=thumbnail)
 
 
 

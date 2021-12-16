@@ -13,7 +13,7 @@ def download(arg):
 	
 	file= stream.download()
 #	print(file)
-	return file
+	return [file, vid.thumbnail_url]
 
 # For testing
 # download("https://youtu.be/_Lp-jRnTHKQ|144")
