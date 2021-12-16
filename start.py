@@ -12,13 +12,15 @@ def mirror_func(client, message):
 		msg= arg
 	except IndexError:
 		msg= "<strong>ERROR: Incorrect Format!</strong><br>Add a link after /mirror to mirror it!"
-	bot.send_message(chat_id=message.chat.id,
-			reply_to_message_id=message.message_id,
-			text= "Got Mirror Request!")
+		
+		# Will check later 
+		
+	#bot.send_message(chat_id=message.chat.id,
+#			reply_to_message_id=message.message_id,
+#			text= "Got Mirror Request!")
 	
-	data= mirror.mirror(arg)
-	msg = data[0]
-	thumbnail= data[1]
+	msg= mirror.mirror(arg)
+	
 	if "ERROR" in msg:
 		bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
@@ -40,14 +42,16 @@ def ytdl_func(client, message):
 			bot.send_message(chat_id=message.chat.id,
 			reply_to_message_id=message.message_id,
 			text= "Got YouTube Download Request!")
-			vid_link= ytdl.download(arg)
+			data= ytdl.download(arg)
+			vid_link= data[0]
+			thumb= data[1]
 			if "ERROR" in vid_link:
 				bot.send_message(chat_id=message.chat.id, reply_to_message_id= message.message_id, text= vid_link, parse_mode="html")
 				return
 			
 			bot.send_video(chat_id=message.chat.id,
 			reply_to_message_id= message.message_id,
-			video=vid_link)
+			video=vid_link, thumb=thumb)
 			if os.path.exists(vid_link):
 				os.remove(vid_link)
 			
