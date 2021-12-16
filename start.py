@@ -42,16 +42,15 @@ def ytdl_func(client, message):
 			bot.send_message(chat_id=message.chat.id,
 			reply_to_message_id=message.message_id,
 			text= "Got YouTube Download Request!")
-			data= ytdl.download(arg)
-			vid_link= data[0]
-			thumb= data[1]
+			vid_link = ytdl.download(arg)
+
 			if "ERROR" in vid_link:
 				bot.send_message(chat_id=message.chat.id, reply_to_message_id= message.message_id, text= vid_link, parse_mode="html")
 				return
 			
 			bot.send_video(chat_id=message.chat.id,
 			reply_to_message_id= message.message_id,
-			video=vid_link, thumb=thumb)
+			video=vid_link, thumb="thumb.jpg")
 			if os.path.exists(vid_link):
 				os.remove(vid_link)
 			
