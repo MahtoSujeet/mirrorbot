@@ -1,4 +1,6 @@
 from pytube import YouTube
+from random import choice
+
 
 def download(arg):
 	try:
@@ -7,8 +9,14 @@ def download(arg):
 #		print(link+"\n"+res)
 	except IndexError:
 		return "ERROR: IndexError"
-		
-	vid = YouTube(link)
+	
+	proxies= list()
+	with open("proxies.txt", "r") as file:
+		lines= file.readlines()
+	for line in lines:
+		proxies.append(line)
+	proxy= {"http": "http://"+choice(proxies)}
+	vid = YouTube(link, proxies=proxy)
 	stream= vid.streams.filter(res=res).first()
 	
 	file= stream.download()
