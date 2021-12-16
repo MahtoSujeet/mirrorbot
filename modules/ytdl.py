@@ -20,14 +20,14 @@ def download(arg):
 	vid = YouTube(link, proxies=proxy)
 	stream= vid.streams.filter(res=res).first()
 	
-	file= stream.download()
-	try:
-		r= requests.get(vid.thumbnail_url, stream= True)
-		with open("thumb.jpg", "wb") as file:
-			for chunk in r.iter_content(chunk_size=1024):
-				file.write(chunk)
-	finally:
-		return file
+	dl_vid= stream.download()
+	
+	r= requests.get(vid.thumbnail_url, stream= True)
+	with open("thumb.jpg", "wb") as file:
+		for chunk in r.iter_content(chunk_size=1024):
+			file.write(chunk)
+
+	return dl_vid
 
 # For testing
 download("https://youtu.be/_Lp-jRnTHKQ|144p")
