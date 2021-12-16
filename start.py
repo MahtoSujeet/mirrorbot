@@ -13,7 +13,7 @@ def mirror_func(client, message):
 	except IndexError:
 		msg= "<strong>ERROR: Incorrect Format!</strong><br>Add a link after /mirror to mirror it!"
 	
-	msg= mirror(arg)
+	msg= mirror.mirror(arg)
 	if "ERROR" in msg:
 		bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
