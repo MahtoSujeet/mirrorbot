@@ -4,7 +4,10 @@ def mirror(arg):
 	args= arg.split("|")
 	try:
 		link= args[0].strip()
-		file_name= args[1].strip()
+		try:
+			file_name= args[1].strip()
+		except Exception:
+			file_name= args[0].split("/")[-1]
 	except Exception as e:
 		return f"ERROR : {e}"
 	
