@@ -2,7 +2,7 @@ from pytube import YouTube
 
 def download(arg):
 	try:
-		link= arg.split("|")[0]
+		link= arg.split("|")[0].strip()
 		res= arg.split("|")[1].strip()
 #		print(link+"\n"+res)
 	except IndexError:
