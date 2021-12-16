@@ -43,5 +43,12 @@ def ytdl_func(client, message):
 	reply_to_message_id= message.message_id,
 	text= msg, parse_mode="html")
 	
+	
+@bot.on_message(filters.command("test"))
+def test(client, message):
+	print("sending file")
+	bot.send_document(chat_id=message.chat.id,
+	document="downloads/Shot on iPhone Meme 10.3gpp")
+	
 print("Bot started!")
 bot.run()
