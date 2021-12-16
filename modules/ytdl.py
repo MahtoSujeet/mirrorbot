@@ -14,8 +14,8 @@ def download(arg):
 	proxies= list()
 	with open("proxies.txt", "r") as file:
 		lines= file.readlines()
-	for line in lines:
-		proxies.append(line)
+		for line in lines:
+			proxies.append(line)
 	proxy= {"http": "http://"+choice(proxies)}
 	vid = YouTube(link, proxies=proxy)
 	stream= vid.streams.filter(res=res).first()
