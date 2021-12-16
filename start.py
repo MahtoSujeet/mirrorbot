@@ -6,7 +6,7 @@ bot = Client("bot")
 
 
 @bot.on_message(filters.command("mirror"))
-def mirror(client, message):
+def mirror_func(client, message):
 	try:
 		arg= message.text.split("mirror")[1].strip()
 		msg= arg
@@ -22,6 +22,8 @@ def mirror(client, message):
 		bot.send_document(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
 	document=msg, parse_mode="html")
+
+
 
 @bot.on_message(filters.command("ytdl"))
 def ytdl_func(client, message):
