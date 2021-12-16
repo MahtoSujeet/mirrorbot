@@ -12,6 +12,9 @@ def mirror_func(client, message):
 		msg= arg
 	except IndexError:
 		msg= "<strong>ERROR: Incorrect Format!</strong><br>Add a link after /mirror to mirror it!"
+	bot.send_message(chat_id=message.chat.id,
+			reply_to_message_id=message.message_id,
+			text= "Got Mirror Request!")
 	
 	msg= mirror.mirror(arg)
 	if "ERROR" in msg:
@@ -32,6 +35,9 @@ def ytdl_func(client, message):
 		if len(arg)==0:
 			msg= "No Arguments passed!"
 		else:
+			bot.send_message(chat_id=message.chat.id,
+			reply_to_message_id=message.message_id,
+			text= "Got YouTube Download Request!")
 			vid_link= ytdl.download(arg)
 			if "ERROR" in vid_link:
 				bot.send_message(chat_id=message.chat.id, reply_to_message_id= message.message_id, text= vid_link, parse_mode="html")
@@ -53,10 +59,10 @@ def ytdl_func(client, message):
 	
 	
 @bot.on_message(filters.command("test"))
-def test(client, message):
-	print("sending file")
-	bot.send_document(chat_id=message.chat.id,
-	document="downloads/Shot on iPhone Meme 10.3gpp")
+def alive(client, message):
+	bot.send_message(chat_id=message.chat.id,
+	reply_to_message_id= message.message_id,
+	text= "Yes, I'm Alive. ")
 	
 print("Bot started!")
 bot.run()
