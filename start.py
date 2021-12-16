@@ -38,8 +38,8 @@ def ytdl_func(client, message):
  
 	except Exception as e:
 		msg= f"<strong>Unknown Error: </strong><br> {e}"
-	print(msg)
-	bot.send_message(chat_id=message.chat.id,
+
+		bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
 	text= msg, parse_mode="html")
 	
