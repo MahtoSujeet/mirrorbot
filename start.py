@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from modules import ytdl
+from modules import ytdl, mirror
 import os
 
 bot = Client("bot")
@@ -11,12 +11,18 @@ def mirror(client, message):
 		arg= message.text.split("mirror")[1].strip()
 		msg= arg
 	except IndexError:
-		msg= "<strong>Incorrect Format!</strong><br>Add a link after /mirror to mirror it!"
+		msg= "<strong>ERROR: Incorrect Format!</strong><br>Add a link after /mirror to mirror it!"
 	
-	bot.send_message(chat_id=message.chat.id,
+	msg= mirror(arg)
+	if "ERROR" in msg:
+		bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
-	text= msg, parse_mode="html")
-	
+	text=msg, parse_mode="html")
+	else:
+		bot.send_document(chat_id=message.chat.id,
+	reply_to_message_id= message.message_id,
+	document=msg, parse_mode="html")
+
 @bot.on_message(filters.command("ytdl"))
 def ytdl_func(client, message):
 	try:
@@ -38,8 +44,8 @@ def ytdl_func(client, message):
  
 	except Exception as e:
 		msg= f"<strong>Unknown Error: </strong><br> {e}"
-
-		bot.send_message(chat_id=message.chat.id,
+	print(msg)
+	bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
 	text= msg, parse_mode="html")
 	
