@@ -13,8 +13,8 @@ def download(arg):
 		return "ERROR: IndexError"
 	
 	proxies= list()
-#	with open("proxies.txt", "r") as file:
-	with open("/sdcard/python/mirrorbot/proxies.txt", "r") as file:
+	with open("proxies.txt", "r") as file:
+#	with open("/sdcard/python/mirrorbot/proxies.txt", "r") as file:
 		lines= file.readlines()
 		for line in lines:
 			proxies.append(line)
@@ -37,4 +37,4 @@ def download(arg):
 	return dl_audio
 
 # For testing
-download("https://youtu.be/_Lp-jRnTHKQ| audio")
+#download("https://youtu.be/_Lp-jRnTHKQ| audio")
