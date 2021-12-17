@@ -48,9 +48,15 @@ def ytdl_func(client, message):
 				bot.send_message(chat_id=message.chat.id, reply_to_message_id= message.message_id, text= vid_link, parse_mode="html")
 				return
 			
-			bot.send_video(chat_id=message.chat.id,
-			reply_to_message_id= message.message_id,
-			video=vid_link, thumb="thumb.jpg")
+			# Sending file to telegram
+			if "audio" or "Audio" in arg:
+				bot.send_audio(chat_id=message.chat.id,
+				 reply_to_message_id= message.message_id,
+				  audio= vid_link)
+			else:
+				bot.send_video(chat_id=message.chat.id,
+				reply_to_message_id= message.message_id,
+				video=vid_link, thumb="thumb.jpg")
 			if os.path.exists(vid_link):
 				os.remove(vid_link)
 			
