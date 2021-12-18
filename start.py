@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from modules import ytdl, mirror
+from modules import ytdl, mirror, xnxx
 import os
 
 bot = Client("bot")
@@ -68,12 +68,24 @@ def ytdl_func(client, message):
 	reply_to_message_id= message.message_id,
 	text= msg, parse_mode="html")
 	
-	
+
+
+@bot.on_message(filters.command("xnxx"))
+def xnxx_func(client, message):
+	file= xnxx.download("https://www.xvideos.com/embedframe/58723571")
+	bot.send_video(
+		chat_id=message.chat.id,
+		reply_to_message_id= message.message_id,
+		video=file
+	)
+	if os.path.exists(file):
+		os.remove(file)
+		
+				
 @bot.on_message(filters.command("test"))
 def alive(client, message):
 	bot.send_message(chat_id=message.chat.id,
 	reply_to_message_id= message.message_id,
 	text= "Yes, I'm Alive. ")
 	
-print("Bot started!")
 bot.run()
