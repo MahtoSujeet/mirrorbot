@@ -9,3 +9,4 @@ pytube==11.0.2
 requests==2.26.0
 urllib3==1.26.7
 TgCrypto==1.2.2
+python-ffmpeg-video-streaming==0.1.14
