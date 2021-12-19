@@ -56,6 +56,7 @@ def ytdl_func(client, message):
 				bot.send_audio(chat_id=message.chat.id,
 				 reply_to_message_id= message.message_id,
 				  audio= vid_link)
+				  
 			else:
 				bot.send_video(chat_id=message.chat.id,
 				reply_to_message_id= message.message_id,

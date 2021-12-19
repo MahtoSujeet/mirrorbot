@@ -34,8 +34,13 @@ def download(arg):
 	# For Downloading audio
 	dl_audio = vid.streams.get_audio_only().download()
 	rename(dl_audio, dl_audio+".mp3")
-	dl_audio= dl_audio+".mp3 "
+	dl_audio= dl_audio+".mp3"
 	return dl_audio
 
-# For testing
-#download("https://youtu.be/_Lp-jRnTHKQ| audio")
+
+
+def test():
+	download("https://youtu.be/_Lp-jRnTHKQ| audio")
+
+if __name__== "__main__":
+	test()
