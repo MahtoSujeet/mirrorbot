@@ -12,9 +12,14 @@ def download (arg):
 	_720p  = Representation(Size(1280, 720), Bitrate(2048 * 1024, 320 * 1024))
 
 	hls = video.hls(Formats.h264())
-	hls.representations(_360p, _480p, _720p)
+	hls.representations(_720p)
 	
 	hls.output("video.mp4")
+	
 	return "video.mp4"
 	
-download ("hey")
+def test():
+	download("hey")
+	
+if __name__=="__main__":
+	test()
