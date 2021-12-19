@@ -1,4 +1,4 @@
-import ffmpeg_streaming, ffmpeg
+import ffmpeg_streaming
 from ffmpeg_streaming import Formats, Bitrate, Representation, Size
 import os
 
