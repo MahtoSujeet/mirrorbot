@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from modules import ytdl, mirror, xnxx
+from bot.helper import send_message, edit_message
 import os
 
 bot = Client("bot")
@@ -14,18 +15,12 @@ def mirror_func(client, message):
 		msg= "<strong>ERROR: Incorrect Format!</strong><br>Add a link after /mirror to mirror it!"
 		
 		
-	bot.send_message(
-		chat_id=message.chat.id,
-		reply_to_message_id=message.message_id,
-		text= "Got Mirror Request!"
-	)
+	send_message("Got mirror Request", bot=bot, message=message)
 	
 	msg= mirror.mirror(arg)
 	
 	if "ERROR" in msg:
-		bot.send_message(chat_id=message.chat.id,
-	reply_to_message_id= message.message_id,
-	text=msg, parse_mode="html")
+		edit_message(msg, bot, message)
 	else:
 		bot.send_document(
 			chat_id=message.chat.id,
