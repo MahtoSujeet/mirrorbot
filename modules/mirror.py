@@ -17,7 +17,7 @@ def mirror(arg):
 			for chunk in response.iter_content(chunk_size= 1024):
 				file.write(chunk)
 		return file_name
-	except requests.exceptions.InvalidSchema:
+	except requests.exceptions.MissingSchema:
 				return "<b>ERROR:</b> Invalid Link!"
 				
 			
