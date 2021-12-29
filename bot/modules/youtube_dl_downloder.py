@@ -18,7 +18,7 @@ class Watch:
 			}
 		
 		self.path = self.download()
-		TgBot.send_video(self.path)
+		bot.send_video(self.path)
 		
 				
 	def download(self):
