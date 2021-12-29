@@ -1,0 +1,16 @@
+
+Classes= 
+
+1. [Bot]
+ There should be a Class for managing sending and editing telegram messages. It should also be able to Upload files.
+
+
+2 [youtube-dl_downloader]
+It will download stuff using yt-dl module.
+	
+
+3. [Mirror]
+To mirror the files, get their size their name, their details. download them and return current sending status.
+
+
+
